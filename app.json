@@ -1,0 +1,127 @@
+{
+  "id": "com.youtube",
+  "name": {
+    "en": "Youtube"
+  },
+  "description": "Search Youtube, play playlists",
+  "version": "0.1.0",
+  "compatibility": "0.x",
+  "category": "music",
+  "images": {
+    "large": "assets/images/large.png",
+    "small": "assets/images/small.png"
+  },
+  "author": {
+    "name": "Matjaž Lipuš",
+    "email": "matjazl@gmail.com"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "youtubeMediaChanged",
+        "title": {
+          "en": "Youtube media changed"
+        },
+        "tokens": [
+          {
+            "name": "url",
+            "title": {
+              "en": "URL"
+            }
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "searchYoutube",
+        "title": {
+          "en": "Search Youtube"
+        },
+        "args": [
+          {
+            "name": "source",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Find a video..."
+            }
+          }
+        ]
+      },
+      {
+        "id": "searchYoutubeLive",
+        "title": {
+          "en": "Search Youtube (live)"
+        },
+        "fluidArgs": true,
+        "args": [
+          {
+            "name": "query",
+            "type": "text",
+            "placeholder": {
+              "en": "search..."
+            }
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "first",
+                "label": {
+                  "en": "First"
+                }
+              },
+              {
+                "id": "random",
+                "label": {
+                  "en": "Random"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "getYoutubePlaylistURL",
+        "title": {
+          "en": "Get Youtube playlist"
+        },
+        "fluidArgs": true,
+        "args": [
+          {
+            "name": "url",
+            "type": "text",
+            "placeholder": {
+              "en": "Playlist URL"
+            }
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "next",
+                "label": {
+                  "en": "Next"
+                }
+              },
+              {
+                "id": "shuffle",
+                "label": {
+                  "en": "Shuffle"
+                }
+              },
+              {
+                "id": "first",
+                "label": {
+                  "en": "First"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
