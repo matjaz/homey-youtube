@@ -24,7 +24,49 @@
     "email": "matjazl@gmail.com"
   },
   "permissions": [
-    "homey:manager:media"
+    "homey:manager:media",
+    "homey:manager:speech-input"
+  ],
+  "speech": [
+    {
+      "id": "youtube",
+      "importance": 0.9,
+      "triggers": {
+        "en": [
+          "watch youtube",
+          "watch from youtube"
+        ]
+      }
+    },
+    {
+      "id": "playYoutube",
+      "importance": 0.9,
+      "triggers": {
+        "en": [
+          "play youtube",
+          "play from youtube"
+        ]
+      }
+    },
+    {
+      "id": "watch",
+      "importance": 0.6,
+      "triggers": {
+        "en": [
+          "watch",
+          "watch movie"
+        ]
+      }
+    },
+    {
+      "id": "play",
+      "importance": 0.6,
+      "triggers": {
+        "en": [
+          "play"
+        ]
+      }
+    }
   ],
   "flow": {
     "triggers": [
