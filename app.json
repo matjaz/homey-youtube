@@ -9,6 +9,11 @@
   "version": "0.2.0",
   "compatibility": "0.x",
   "category": "music",
+  "media": [
+    "play",
+    "pause",
+    "search"
+  ],
   "images": {
     "large": "assets/images/large.png",
     "small": "assets/images/small.png"
@@ -18,6 +23,9 @@
     "website": "http://matjaz.info",
     "email": "matjazl@gmail.com"
   },
+  "permissions": [
+    "homey:manager:media"
+  ],
   "flow": {
     "triggers": [
       {
