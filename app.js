@@ -1,15 +1,16 @@
 'use strict'
 
-var onFlowActionSearch = require('./lib/search').onFlowActionSearch
-var onFlowActionSearchLive = require('./lib/search').onFlowActionSearchLive
-var onFlowActionPlayListItems = require('./lib/playlist').onFlowActionPlayListItems
-var onFlowActionSearchAutocomplete = require('./lib/search').onFlowActionSearchAutocomplete
+var media = require('./lib/media')
+var speech = require('./lib/speech-input')
+var search = require('./lib/search')
+var playlist = require('./lib/playlist')
 
 exports.init = function () {
-  // Homey.log('Youtube')
+  media.init()
+  speech.init()
 
-  Homey.manager('flow').on('action.searchYoutube', onFlowActionSearch)
-  Homey.manager('flow').on('action.searchYoutubeLive', onFlowActionSearchLive)
-  Homey.manager('flow').on('action.getYoutubePlaylistURL', onFlowActionPlayListItems)
-  Homey.manager('flow').on('action.searchYoutube.source.autocomplete', onFlowActionSearchAutocomplete)
+  search.init()
+  playlist.init()
+
+  Homey.log('YouTube ready')
 }

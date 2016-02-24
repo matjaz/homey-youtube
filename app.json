@@ -1,26 +1,79 @@
 {
   "id": "com.youtube",
   "name": {
-    "en": "Youtube"
+    "en": "YouTube"
   },
-  "description": "Search Youtube, play playlists",
-  "version": "0.1.0",
+  "description": {
+    "en": "Search YouTube, play playlists"
+  },
+  "version": "0.2.0",
   "compatibility": "0.x",
   "category": "music",
+  "media": [
+    "play",
+    "pause",
+    "search"
+  ],
   "images": {
     "large": "assets/images/large.png",
     "small": "assets/images/small.png"
   },
   "author": {
     "name": "Matjaž Lipuš",
+    "website": "http://matjaz.info",
     "email": "matjazl@gmail.com"
   },
+  "permissions": [
+    "homey:manager:media",
+    "homey:manager:speech-input"
+  ],
+  "speech": [
+    {
+      "id": "youtube",
+      "importance": 0.9,
+      "triggers": {
+        "en": [
+          "watch youtube",
+          "watch from youtube"
+        ]
+      }
+    },
+    {
+      "id": "playYoutube",
+      "importance": 0.9,
+      "triggers": {
+        "en": [
+          "play youtube",
+          "play from youtube"
+        ]
+      }
+    },
+    {
+      "id": "watch",
+      "importance": 0.6,
+      "triggers": {
+        "en": [
+          "watch",
+          "watch movie"
+        ]
+      }
+    },
+    {
+      "id": "play",
+      "importance": 0.6,
+      "triggers": {
+        "en": [
+          "play"
+        ]
+      }
+    }
+  ],
   "flow": {
     "triggers": [
       {
         "id": "youtubeMediaChanged",
         "title": {
-          "en": "Youtube media changed"
+          "en": "YouTube media changed"
         },
         "tokens": [
           {
@@ -36,7 +89,7 @@
       {
         "id": "searchYoutube",
         "title": {
-          "en": "Search Youtube"
+          "en": "Search YouTube"
         },
         "args": [
           {
@@ -51,7 +104,7 @@
       {
         "id": "searchYoutubeLive",
         "title": {
-          "en": "Search Youtube (live)"
+          "en": "Search YouTube (live)"
         },
         "fluidArgs": true,
         "args": [
@@ -85,7 +138,7 @@
       {
         "id": "getYoutubePlaylistURL",
         "title": {
-          "en": "Get Youtube playlist"
+          "en": "Get YouTube playlist"
         },
         "fluidArgs": true,
         "args": [
