@@ -6,9 +6,12 @@
   "description": {
     "en": "Search YouTube, play playlists"
   },
-  "version": "0.2.0",
+  "version": "0.3.0",
   "compatibility": "0.x",
-  "category": "music",
+  "category": [
+    "music",
+    "video"
+  ],
   "media": [
     "play",
     "pause",
@@ -22,6 +25,15 @@
     "name": "Matjaž Lipuš",
     "website": "http://matjaz.info",
     "email": "matjazl@gmail.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Matjaž Lipuš",
+        "website": "http://matjaz.info",
+        "email": "matjazl@gmail.com"
+      }
+    ]
   },
   "permissions": [
     "homey:manager:media",
