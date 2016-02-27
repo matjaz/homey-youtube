@@ -9,8 +9,8 @@ Speech support
 
 ### Speech
 
-- "watch YouTube"; triggers "YouTube media changed"
-- "play YouTube"; plays music on Homey
+- "watch Adele from YouTube"; triggers "YouTube media changed"
+- "play Adele from YouTube"; plays music on Homey
 
 ### API support
 
