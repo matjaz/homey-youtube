@@ -186,6 +186,12 @@
             ]
           }
         ]
+      },
+      {
+        "id": "stopYoutubePlaylist",
+        "title": {
+          "en": "Stop YouTube playlist"
+        }
       }
     ]
   }
