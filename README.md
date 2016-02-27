@@ -1,7 +1,7 @@
 # YouTube media player
 
-Allows you to search YouTube and play found video in media player.  
-Allows you to play specified playlist  
+Search YouTube and play found video in media player.  
+Play playlists  
 Play music directly on Homey _(experimental)_  
 Speech support  
 
