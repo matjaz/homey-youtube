@@ -45,34 +45,24 @@
       "importance": 0.9,
       "triggers": {
         "en": [
-          "watch youtube",
-          "watch from youtube"
-        ]
-      }
-    },
-    {
-      "id": "playYoutube",
-      "importance": 0.9,
-      "triggers": {
-        "en": [
-          "play youtube",
-          "play from youtube"
+          "from youtube",
+          "on youtube",
+          "youtube"
         ]
       }
     },
     {
       "id": "watch",
-      "importance": 0.6,
+      "importance": false,
       "triggers": {
         "en": [
-          "watch",
-          "watch movie"
+          "watch"
         ]
       }
     },
     {
       "id": "play",
-      "importance": 0.6,
+      "importance": false,
       "triggers": {
         "en": [
           "play"
