@@ -26,7 +26,7 @@ Homey.manager('api').get('/app/com.youtube/search?q=hello', function (err, resul
 ![Playlist autoplay support][action-playlist-image]  
 ![YouTube media change trigger][trigger-change-image]  
 
-Works great with [Chromecast app][chromecast-app].
+Works great with [Chromecast app][chromecast-app].  
 ![Chromecast cast URL][chromecast-image]
 
 [chromecast-app]: https://apps.athom.com/app/com.google.chromecast
