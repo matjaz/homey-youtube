@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "description": "YouTube Homey app",
   "author": "Matjaz Lipus",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "http.min": "^1.1.0"
+  }
 }
