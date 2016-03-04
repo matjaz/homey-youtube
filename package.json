@@ -5,6 +5,6 @@
   "author": "Matjaz Lipus",
   "license": "ISC",
   "dependencies": {
-    "http.min": "^1.1.0"
+    "http.min": "^1.2.1"
   }
 }
