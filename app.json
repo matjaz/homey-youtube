@@ -6,7 +6,7 @@
   "description": {
     "en": "Search YouTube, play playlists"
   },
-  "version": "0.3.0",
+  "version": "0.3.1",
   "compatibility": "0.x",
   "category": [
     "music",
