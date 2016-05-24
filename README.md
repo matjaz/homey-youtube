@@ -4,6 +4,15 @@ Search YouTube and play found video in media player.
 Play playlists  
 Play music directly on Homey _(experimental)_  
 
+### Trigger cards
+- YouTube media changed - triggered when search finishes or playlist item changes
+
+### Action cards
+- Search YouTube - play predefined video
+- Search YouTube (live) - searches dynamic query (i.e. from speech)
+- Get YouTube playlist - fethes playlist and triggers media changed trigger
+- Stop YouTube playlist - stops playlist
+
 ### Speech support
 
 - "watch Adele from YouTube"; triggers "YouTube media changed"
