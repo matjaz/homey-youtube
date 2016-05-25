@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+      <title>Settings</title>
+  </head>
+  <body>
+    <h1>YouTube settings</h1>
+    <fieldset>
+      <legend>Playlist</legend>
+      <div class="field row">
+        <label for="playlistDelay">Delay next item</label>
+        <input id="playlistDelay" type="number" placeholder="seconds">
+      </div>
+    </fieldset>
+    <button class="right" onclick="save()">Save changes</button>
+    <script>
+    function onHomeyReady() {
+      Homey.get('playlistDelay', function(err, playlistDelay) {
+        if (err) {
+          console.error(err)
+        } else {
+          document.getElementById('playlistDelay').value = playlistDelay
+        }
+        Homey.ready()
+      })
+    }
+    function save() {
+      Homey.set('playlistDelay', document.getElementById('playlistDelay').value)
+    }
+    </script>
+  </body>
+</html>
