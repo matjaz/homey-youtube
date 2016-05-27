@@ -1,4 +1,5 @@
 var search = require('./lib/search').search
+var getInfo = require('./lib/info').getInfo
 
 module.exports = [{
   path: '/search',
@@ -14,4 +15,31 @@ module.exports = [{
       }
     })
   }
+}, {
+  method: 'GET',
+  path: '/videoInfo',
+  description: 'Get YouTube video info. Example: /videoInfo?id=mFrghyAyNTg',
+  fn: function (callback, args) {
+    info(args.query.url, args.query, callback)
+  }
+}, {
+  method: 'GET',
+  path: '/videoInfo/:id',
+  description: 'Get YouTube video info. Example: /videoInfo?id=mFrghyAyNTg',
+  fn: function (callback, args) {
+    info(args.params.id, args.query, callback)
+  }
 }]
+
+function info (idOrUrl, options, callback) {
+  if (options['filter.type']) {
+    var filterType = options['filter.type']
+    options.filter = function (format) {
+      return format.type && format.type.startsWith(filterType)
+    }
+    delete options['filter.type']
+  }
+  getInfo(idOrUrl, options)
+    .then(result => callback(null, result))
+    .catch(callback)
+}
