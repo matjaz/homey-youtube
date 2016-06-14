@@ -37,7 +37,8 @@
   },
   "permissions": [
     "homey:manager:media",
-    "homey:manager:speech-input"
+    "homey:manager:speech-input",
+    "homey:app:com.google.chromecast"
   ],
   "speech": [
     {
