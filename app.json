@@ -6,7 +6,7 @@
   "description": {
     "en": "Search YouTube, play playlists"
   },
-  "version": "0.4.2",
+  "version": "0.5.0",
   "compatibility": "0.x",
   "category": [
     "music",
@@ -83,6 +83,12 @@
             "name": "url",
             "title": {
               "en": "URL"
+            }
+          },
+          {
+            "name": "source",
+            "title": {
+              "en": "Source"
             }
           }
         ]
