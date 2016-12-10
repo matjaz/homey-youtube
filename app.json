@@ -1,10 +1,12 @@
 {
   "id": "com.youtube",
   "name": {
-    "en": "YouTube"
+    "en": "YouTube",
+    "nl": "YouTube"
   },
   "description": {
-    "en": "Search YouTube, play playlists"
+    "en": "Search YouTube, play playlists",
+    "nl": "Doorzoek YouTube, speel afspeellijsten"
   },
   "version": "0.5.1",
   "compatibility": "0.x || 1.x",
@@ -33,7 +35,15 @@
         "website": "http://matjaz.info",
         "email": "matjazl@gmail.com"
       }
-    ]
+    ],
+    "translators": [
+      {
+		"name": "Marco van 't Klooster",
+		"email": "info@marcovantklooster.nl",
+		"website": "http://www.marcovantklooster.nl",
+		"languages": ["nl"]
+	  }
+	]
   },
   "permissions": [
     "homey:manager:media",
@@ -49,6 +59,11 @@
           "from youtube",
           "on youtube",
           "youtube"
+        ],
+        "nl": [
+          "van youtube",
+          "op youtube",
+          "youtube"
         ]
       }
     },
@@ -58,6 +73,10 @@
       "triggers": {
         "en": [
           "watch"
+        ],
+        "nl": [
+          "bekijk",
+          "kijk"
         ]
       }
     },
@@ -67,6 +86,9 @@
       "triggers": {
         "en": [
           "play"
+        ],
+        "nl": [
+          "speel"
         ]
       }
     }
@@ -82,13 +104,15 @@
           {
             "name": "url",
             "title": {
-              "en": "URL"
+              "en": "URL",
+              "nl": "URL"
             }
           },
           {
             "name": "source",
             "title": {
-              "en": "Source"
+              "en": "Source",
+              "nl": "Bron"
             }
           }
         ]
@@ -98,14 +122,16 @@
       {
         "id": "searchYoutube",
         "title": {
-          "en": "Search YouTube"
+          "en": "Search YouTube",
+          "nl": "Doorzoek YouTube"
         },
         "args": [
           {
             "name": "source",
             "type": "autocomplete",
             "placeholder": {
-              "en": "Find a video..."
+              "en": "Find a video...",
+              "nl": "Vind een video..."
             }
           }
         ]
@@ -113,7 +139,8 @@
       {
         "id": "searchYoutubeLive",
         "title": {
-          "en": "Search YouTube (live)"
+          "en": "Search YouTube (live)",
+          "nl": "Doorzoek YouTube (live)"
         },
         "fluidArgs": true,
         "args": [
@@ -121,7 +148,8 @@
             "name": "query",
             "type": "text",
             "placeholder": {
-              "en": "search..."
+              "en": "search...",
+              "nl": "zoeken..."
             }
           },
           {
@@ -131,13 +159,15 @@
               {
                 "id": "first",
                 "label": {
-                  "en": "First"
+                  "en": "First",
+                  "nl": "Eerste"
                 }
               },
               {
                 "id": "random",
                 "label": {
-                  "en": "Random"
+                  "en": "Random",
+                  "nl": "Willekeurig"
                 }
               }
             ]
@@ -147,7 +177,8 @@
       {
         "id": "getYoutubePlaylistURL",
         "title": {
-          "en": "Get YouTube playlist"
+          "en": "Get YouTube playlist",
+          "nl": "Speel YouTube afspeellijst"
         },
         "fluidArgs": true,
         "args": [
@@ -155,7 +186,8 @@
             "name": "url",
             "type": "text",
             "placeholder": {
-              "en": "Playlist URL"
+              "en": "Playlist URL",
+              "nl": "Afspeellijst URL"
             }
           },
           {
@@ -165,19 +197,22 @@
               {
                 "id": "next",
                 "label": {
-                  "en": "Next"
+                  "en": "Next",
+                  "nl": "Volgende"
                 }
               },
               {
                 "id": "shuffle",
                 "label": {
-                  "en": "Shuffle"
+                  "en": "Shuffle",
+                  "nl": "Mixen"
                 }
               },
               {
                 "id": "first",
                 "label": {
-                  "en": "First"
+                  "en": "First",
+                  "nl": "Eerste"
                 }
               }
             ]
@@ -187,7 +222,8 @@
       {
         "id": "stopYoutubePlaylist",
         "title": {
-          "en": "Stop YouTube playlist"
+          "en": "Stop YouTube playlist",
+          "nl": "Stop YouTube afspeellijst"
         }
       }
     ]

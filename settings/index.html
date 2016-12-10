@@ -4,15 +4,15 @@
       <title>Settings</title>
   </head>
   <body>
-    <h1>YouTube settings</h1>
+    <h1 data-i18n="settings.title">YouTube settings</h1>
     <fieldset>
-      <legend>Playlist</legend>
+      <legend data-i18n="settings.playlist">Playlist</legend>
       <div class="field row">
-        <label for="playlistDelay">Delay next item</label>
-        <input id="playlistDelay" type="number" placeholder="seconds">
+        <label for="playlistDelay" data-i18n="settings.playlistDelay">Delay next item</label>
+        <input id="playlistDelay" type="number" placeholder="seconds" data-i18n-placeholder="settings.seconds">
       </div>
     </fieldset>
-    <button class="right" onclick="save()">Save changes</button>
+    <button class="right" onclick="save()" data-i18n="settings.save">Save changes</button>
     <script>
     function onHomeyReady() {
       Homey.get('playlistDelay', function(err, playlistDelay) {

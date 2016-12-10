@@ -1,1 +1,9 @@
-{}
+{
+	"settings": {
+		"title": "YouTube settings",
+		"playlist": "Playlist",
+		"playlistDelay": "Delay next item",
+		"seconds": "seconds",
+		"save": "Save changes"
+	}
+}
