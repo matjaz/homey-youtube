@@ -9,22 +9,32 @@
       <legend data-i18n="settings.playlist">Playlist</legend>
       <div class="field row">
         <label for="playlistDelay" data-i18n="settings.playlistDelay">Delay next item</label>
-        <input id="playlistDelay" type="number" placeholder="seconds" data-i18n-placeholder="settings.seconds">
+        <input id="playlistDelay" type="number" data-i18n-placeholder="settings.seconds">
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend data-i18n="settings.YTapiKey"></legend>
+      <p>You can obtain YouTube Data API server key from <a href="https://console.developers.google.com" target="_blank">Google developers console</a>.</p>
+      <div class="field row">
+        <label for="apiKey" data-i18n="settings.apiKey"></label>
+        <input id="apiKey">
       </div>
     </fieldset>
     <button class="right" onclick="save()" data-i18n="settings.save">Save changes</button>
     <script>
     function onHomeyReady() {
-      Homey.get('playlistDelay', function(err, playlistDelay) {
+      Homey.get(function(err, settings) {
         if (err) {
           console.error(err)
         } else {
-          document.getElementById('playlistDelay').value = playlistDelay
+          document.getElementById('apiKey').value = settings.apiKey
+          document.getElementById('playlistDelay').value = settings.playlistDelay
         }
         Homey.ready()
       })
     }
     function save() {
+      Homey.set('apiKey', document.getElementById('apiKey').value)
       Homey.set('playlistDelay', document.getElementById('playlistDelay').value)
     }
     </script>

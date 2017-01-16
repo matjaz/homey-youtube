@@ -4,6 +4,8 @@
 		"playlist": "Playlist",
 		"playlistDelay": "Delay next item",
 		"seconds": "seconds",
+		"apiKey": "API key",
+		"YTapiKey" :"YouTube API key",
 		"save": "Save changes"
 	}
 }
