@@ -6,6 +6,7 @@
 		"seconds": "seconds",
 		"apiKey": "API key",
 		"YTapiKey" :"YouTube API key",
-		"save": "Save changes"
+		"save": "Save changes",
+    "login": "Login"
 	}
 }

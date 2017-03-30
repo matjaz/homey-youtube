@@ -1,5 +1,6 @@
 var search = require('./lib/search').search
 var getInfo = require('./lib/info').getInfo
+var oauth = require('./lib/oauth')
 
 module.exports = [{
   path: '/search',
@@ -29,7 +30,15 @@ module.exports = [{
   fn: function (callback, args) {
     info(args.params.id, args.query, callback)
   }
-}]
+}, {
+  description: 'Log-in',
+  method: 'POST',
+  path: '/settings/authorize',
+  fn: function (callback, args) {
+    oauth.authorize(callback)
+  }
+}
+]
 
 function info (idOrUrl, options, callback) {
   if (options['filter.type']) {
