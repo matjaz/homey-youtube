@@ -56,15 +56,15 @@
           <p id="metadata">
             <span id="name"></span>
           </p>
-          <button class="button" onclick="logout();">Click here to log-out</button>
+          <button class="button" onclick="logout();" data-i18n="settings.logoutText"></button>
         </div>
         <div class="view" id="logged_out">          
-          <p>Log-in to youtube so you can synchronize your playlists.</p>
-          <button class="button" onclick="login();">Click here to log-in</button>
+          <p data-i18n="settings.playlistSync"></p>
+          <button class="button" onclick="login();" data-i18n="settings.loginText"></button>
         </div>
       </div>
     </fieldset>
-    <button class="right" onclick="save()" data-i18n="settings.save">Save changes</button>
+    <button class="right" onclick="save()" data-i18n="settings.save"></button>
     <script>
     function onHomeyReady() {
       Homey.get(function(err, settings) {
@@ -92,40 +92,43 @@
 
     function update( callback ) {
       Homey.get('auth', function( err, settings ){
-      if( err ) return Homey.alert(err, 'error');
-          var logged_in = ( settings && typeof settings.accessToken == 'string' );
-          document.getElementById('logged_out').classList.toggle('visible', !logged_in);
-          document.getElementById('logged_in').classList.toggle('visible', logged_in);
-          
-          if (logged_in && settings.userName && settings.userProfilePicture) {
-            // Set user name and avatar
-            document.getElementById('name').innerText = settings.userName
-            document.getElementById('avatar').style.backgroundImage = 'url(' + settings.userProfilePicture + ')'
-          }      
-          
-          if( typeof callback == 'function' ) callback();
-        });
+        if( err ) {
+          callback(err);
+          return Homey.alert(err, 'error');
+        }
+        var logged_in = ( settings && typeof settings.accessToken == 'string' );
+        document.getElementById('logged_out').classList.toggle('visible', !logged_in);
+        document.getElementById('logged_in').classList.toggle('visible', logged_in);
+        
+        if (logged_in && settings.userName && settings.userProfilePicture) {
+          // Set user name and avatar
+          document.getElementById('name').innerText = settings.userName
+          document.getElementById('avatar').style.backgroundImage = 'url(' + settings.userProfilePicture + ')'
+        }      
+        
+        if( typeof callback == 'function' ) callback();
+      });
+    }
+        
+    function login(){
+      Homey.api('POST', '/settings/authorize', {}, function(err, url){
+      if( err ) return Homey.alert('Error', 'error');
+      
+      var width	= 600;
+      var height	= 600;
+      var left	= (screen.width/2)-(width/2);
+      var top		= (screen.height/2)-(height/2);
+        
+      auth_dialog = window.open(url, "auth_dialog", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top + ", menubar=no, status=no, toolbar=no");
+        })
       }
         
-      function login(){
-        Homey.api('POST', '/settings/authorize', {}, function(err, url){
-        if( err ) return Homey.alert('Error', 'error');
-        
-        var width	= 600;
-        var height	= 600;
-        var left	= (screen.width/2)-(width/2);
-        var top		= (screen.height/2)-(height/2);
-          
-        auth_dialog = window.open(url, "auth_dialog", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top + ", menubar=no, status=no, toolbar=no");
-          })
-        }
-          
-        function logout() {
-          Homey.set('auth', {}, function( err, settings ){
-            if( err ) return alert(err);
-            update();
-          })
-        }
+      function logout() {
+        Homey.set('auth', {}, function( err, settings ){
+          if( err ) return alert(err);
+          update();
+        })
+      }
     </script>
   </body>
 </html>

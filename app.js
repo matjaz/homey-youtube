@@ -11,6 +11,6 @@ exports.init = function () {
 
   search.init()
   playlist.init()
-  
+
   Homey.log('YouTube ready')
 }

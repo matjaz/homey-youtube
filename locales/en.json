@@ -1,12 +1,15 @@
 {
-	"settings": {
-		"title": "YouTube settings",
-		"playlist": "Playlist",
-		"playlistDelay": "Delay next item",
-		"seconds": "seconds",
-		"apiKey": "API key",
-		"YTapiKey" :"YouTube API key",
-		"save": "Save changes",
-    "login": "Login"
+  "settings": {
+    "title": "YouTube settings",
+    "playlist": "Playlist",
+    "playlistDelay": "Delay next item",
+    "seconds": "seconds",
+    "apiKey": "API key",
+    "YTapiKey" :"YouTube API key",
+    "save": "Save changes",
+    "login": "Login",
+    "logintText": "Click here to log-in",
+    "logoutText": "Click here to log-out",
+    "playlistSync": "Log-in to youtube so you can synchronize your playlists."
 	}
 }

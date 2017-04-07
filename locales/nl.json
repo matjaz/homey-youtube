@@ -7,6 +7,9 @@
 		"save": "Instellingen opslaan",
     "apiKey": "API key",
 		"YTapiKey" :"YouTube API key",
-    "login": "Inloggen"
+    "login": "Inloggen",
+    "logintText": "Klik hier om in te loggen",
+    "logoutText": "Klik hier om uit te loggen",
+    "playlistSync": "Log-in met je YouTube account om je afspeellijsten te synchroniseren."
 	}
 }
