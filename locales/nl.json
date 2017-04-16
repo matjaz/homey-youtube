@@ -5,11 +5,11 @@
 		"playlistDelay": "Vertraging volgende",
 		"seconds": "Seconden",
 		"save": "Instellingen opslaan",
-    "apiKey": "API key",
+		"apiKey": "API key",
 		"YTapiKey" :"YouTube API key",
-    "login": "Inloggen",
-    "logintText": "Klik hier om in te loggen",
-    "logoutText": "Klik hier om uit te loggen",
-    "playlistSync": "Log-in met je YouTube account om je afspeellijsten te synchroniseren."
+		"login": "Inloggen",
+		"logintText": "Klik hier om in te loggen",
+		"logoutText": "Klik hier om uit te loggen",
+		"playlistSync": "Log-in met je YouTube account om je afspeellijsten te synchroniseren."
 	}
 }
