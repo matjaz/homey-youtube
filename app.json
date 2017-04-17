@@ -17,7 +17,9 @@
   "media": [
     "play",
     "pause",
-    "search"
+    "search",
+    "getPlaylists", 
+    "getPlaylist"
   ],
   "images": {
     "large": "assets/images/large.png",

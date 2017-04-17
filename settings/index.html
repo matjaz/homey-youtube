@@ -2,6 +2,32 @@
 <html>
   <head>
       <title>Settings</title>
+      <style type="text/css">
+        .view {
+          display: none;
+        }
+        .view.visible {
+          display: block;
+        }
+        #avatar {
+          display: block;
+          width: 100px;
+          height: 100px;
+          border-radius: 100px;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+          border: 1px solid #eee;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          cursor: default;
+        }
+        #metadata > span {
+          display: block;
+        }
+        #name {
+          font-weight: 400;
+        }
+      </style>
   </head>
   <body>
     <h1 data-i18n="settings.title">YouTube settings</h1>
@@ -20,7 +46,25 @@
         <input id="apiKey">
       </div>
     </fieldset>
-    <button class="right" onclick="save()" data-i18n="settings.save">Save changes</button>
+    <fieldset>
+      <legend data-i18n="settings.login"></legend>
+      <div class="field row">
+        <div class="view" id="logged_in">
+          <p>
+            <span id="avatar" />
+          </p>
+          <p id="metadata">
+            <span id="name"></span>
+          </p>
+          <button class="button" onclick="logout();" data-i18n="settings.logoutText"></button>
+        </div>
+        <div class="view" id="logged_out">          
+          <p data-i18n="settings.playlistSync"></p>
+          <button class="button" onclick="login();" data-i18n="settings.loginText"></button>
+        </div>
+      </div>
+    </fieldset>
+    <button class="right" onclick="save()" data-i18n="settings.save"></button>
     <script>
     function onHomeyReady() {
       Homey.get(function(err, settings) {
@@ -30,13 +74,61 @@
           document.getElementById('apiKey').value = settings.apiKey
           document.getElementById('playlistDelay').value = settings.playlistDelay
         }
-        Homey.ready()
+        //Homey.ready()
+        Homey.on( 'authorized', function( success ){
+          if( success === false ) alert( __('authorized_error') )
+          update();
+        });
+        
+        update(function(){
+            Homey.ready();					
+        });
       })
     }
     function save() {
       Homey.set('apiKey', document.getElementById('apiKey').value)
       Homey.set('playlistDelay', document.getElementById('playlistDelay').value)
     }
+
+    function update( callback ) {
+      Homey.get('auth', function( err, settings ){
+        if( err ) {
+          callback(err);
+          return Homey.alert(err, 'error');
+        }
+        var logged_in = ( settings && typeof settings.accessToken == 'string' );
+        document.getElementById('logged_out').classList.toggle('visible', !logged_in);
+        document.getElementById('logged_in').classList.toggle('visible', logged_in);
+        
+        if (logged_in && settings.userName && settings.userProfilePicture) {
+          // Set user name and avatar
+          document.getElementById('name').innerText = settings.userName
+          document.getElementById('avatar').style.backgroundImage = 'url(' + settings.userProfilePicture + ')'
+        }      
+        
+        if( typeof callback == 'function' ) callback();
+      });
+    }
+        
+    function login(){
+      Homey.api('POST', '/settings/authorize', {}, function(err, url){
+      if( err ) return Homey.alert('Error', 'error');
+      
+      var width	= 600;
+      var height	= 600;
+      var left	= (screen.width/2)-(width/2);
+      var top		= (screen.height/2)-(height/2);
+        
+      auth_dialog = window.open(url, "auth_dialog", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top + ", menubar=no, status=no, toolbar=no");
+        })
+      }
+        
+      function logout() {
+        Homey.set('auth', {}, function( err, settings ){
+          if( err ) return alert(err);
+          update();
+        })
+      }
     </script>
   </body>
 </html>
