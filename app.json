@@ -8,7 +8,7 @@
     "en": "Search YouTube, play playlists",
     "nl": "Doorzoek YouTube, speel afspeellijsten"
   },
-  "version": "0.6.2",
+  "version": "0.6.3",
   "compatibility": ">=1.2.x",
   "category": [
     "music",
