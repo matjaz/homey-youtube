@@ -3,12 +3,6 @@
   <head>
       <title>Settings</title>
       <style type="text/css">
-        .view {
-          display: none;
-        }
-        .view.visible {
-          display: block;
-        }
         #avatar {
           display: block;
           width: 100px;
@@ -32,21 +26,6 @@
   <body>
     <h1 data-i18n="settings.title">YouTube settings</h1>
     <fieldset>
-      <legend data-i18n="settings.playlist">Playlist</legend>
-      <div class="field row">
-        <label for="playlistDelay" data-i18n="settings.playlistDelay">Delay next item</label>
-        <input id="playlistDelay" type="number" data-i18n-placeholder="settings.seconds">
-      </div>
-    </fieldset>
-    <fieldset>
-      <legend data-i18n="settings.YTapiKey"></legend>
-      <p>You can obtain YouTube Data API server key from <a href="https://console.developers.google.com" target="_blank">Google developers console</a>.</p>
-      <div class="field row">
-        <label for="apiKey" data-i18n="settings.apiKey"></label>
-        <input id="apiKey">
-      </div>
-    </fieldset>
-    <fieldset>
       <legend data-i18n="settings.login"></legend>
       <div class="field row">
         <div class="view" id="logged_in">
@@ -64,49 +43,37 @@
         </div>
       </div>
     </fieldset>
-    <button class="right" onclick="save()" data-i18n="settings.save"></button>
     <script>
     function onHomeyReady() {
-      Homey.get(function(err, settings) {
-        if (err) {
-          console.error(err)
-        } else {
-          document.getElementById('apiKey').value = settings.apiKey
-          document.getElementById('playlistDelay').value = settings.playlistDelay
-        }
-        //Homey.ready()
         Homey.on( 'authorized', function( success ){
-          if( success === false ) alert( __('authorized_error') )
+          if( success === false ) alert( Homey.__('authorized_error') )
           update();
         });
-        
         update(function(){
             Homey.ready();					
         });
-      })
-    }
-    function save() {
-      Homey.set('apiKey', document.getElementById('apiKey').value)
-      Homey.set('playlistDelay', document.getElementById('playlistDelay').value)
     }
 
     function update( callback ) {
       Homey.get('auth', function( err, settings ){
         if( err ) {
-          callback(err);
-          return Homey.alert(err, 'error');
+          Homey.alert(err, 'error');
+          callback && callback(err);
+          return;
         }
-        var logged_in = ( settings && typeof settings.accessToken == 'string' );
-        document.getElementById('logged_out').classList.toggle('visible', !logged_in);
-        document.getElementById('logged_in').classList.toggle('visible', logged_in);
+        if (settings) {
+          var logged_in = typeof settings.accessToken == 'string';
+          document.getElementById('logged_out').hidden =  logged_in;
+          document.getElementById('logged_in').hidden  = !logged_in;
+          
+          if (logged_in && settings.userName && settings.userProfilePicture) {
+            // Set user name and avatar
+            document.getElementById('name').innerText = settings.userName
+            document.getElementById('avatar').style.backgroundImage = 'url("' + settings.userProfilePicture + '")'
+          }
+        }
         
-        if (logged_in && settings.userName && settings.userProfilePicture) {
-          // Set user name and avatar
-          document.getElementById('name').innerText = settings.userName
-          document.getElementById('avatar').style.backgroundImage = 'url(' + settings.userProfilePicture + ')'
-        }      
-        
-        if( typeof callback == 'function' ) callback();
+        callback && callback(err);
       });
     }
         
@@ -121,14 +88,14 @@
         
       auth_dialog = window.open(url, "auth_dialog", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top + ", menubar=no, status=no, toolbar=no");
         })
-      }
+    }
         
-      function logout() {
-        Homey.set('auth', {}, function( err, settings ){
-          if( err ) return alert(err);
-          update();
-        })
-      }
+    function logout() {
+      Homey.set('auth', {}, function( err, settings ){
+        if( err ) return alert(err);
+        update();
+      })
+    }
     </script>
   </body>
 </html>
